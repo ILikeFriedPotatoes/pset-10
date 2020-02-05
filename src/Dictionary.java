@@ -6,31 +6,37 @@ import javax.swing.JButton;
 
 public class Dictionary extends JFrame {
 	
-	JPanel dictionaryWindow = new JPanel();
-	JButton removeButton = new JButton("Remove");
+	static JPanel dictionaryWindow = new JPanel();
+	static JButton addButton = new JButton("Add");
+	static JButton removeButton = new JButton("Remove");
 	
 	//main function
 	public static void main(String[] args) {
-		JFrame frame = new JFrame("Joseph's Dictionary");
-		//((Dictionary) frame).BasicSwing();
-		frame.setSize(400, 300);
-		frame.setResizable(true);
-		//frame.add(removeButton);
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		dictionaryWindow();
 	}
 	
 	//creates the graphical application. Most code will go here.
-	/*
-	private void BasicSwing() {
-		setSize(400, 300);
-		setResizable(true);
-		
-		dictionaryWindow.add(removeButton);
-		add(dictionaryWindow);
-		
-		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}*/
 	
+	private static void dictionaryWindow() {
+		JFrame frame = new JFrame("Joseph's Dictionary");
+		frame.setSize(400, 300);
+		frame.setResizable(true);
+		
+		//creates the remove and add button
+		dictionaryWindow.add(addButton);
+		dictionaryWindow.add(removeButton);
+		frame.add(dictionaryWindow);
+		frame.setVisible(true);
+		
+		//closes the dictionary
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	private static void buttons() {
+		
+	}
+	
+	private static void mainViewWindow() {
+		
+	}
 }
