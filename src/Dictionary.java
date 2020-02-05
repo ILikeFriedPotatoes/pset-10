@@ -4,8 +4,6 @@ import javax.swing.JPanel;
 
 import javax.swing.JButton;
 
-
-
 public class Dictionary extends JFrame {
 	
 	JPanel dictionaryWindow = new JPanel();
@@ -13,13 +11,18 @@ public class Dictionary extends JFrame {
 	
 	//main function
 	public static void main(String[] args) {
-		BasicSwing();
 		JFrame frame = new JFrame("Joseph's Dictionary");
+		//((Dictionary) frame).BasicSwing();
+		frame.setSize(400, 300);
+		frame.setResizable(true);
+		//frame.add(removeButton);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	//creates the graphical application. Most code will go here.
+	/*
 	private void BasicSwing() {
-		super("Dictionary App");
 		setSize(400, 300);
 		setResizable(true);
 		
@@ -28,6 +31,6 @@ public class Dictionary extends JFrame {
 		
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}
+	}*/
 	
 }
