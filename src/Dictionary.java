@@ -1,6 +1,9 @@
-import javax.*;
+//import javax.*;
 import javax.swing.JFrame;
+import javax.swing.JMenuBar;
 import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
 
 import javax.swing.JButton;
 
@@ -10,6 +13,8 @@ public class Dictionary extends JFrame {
 	static JButton addButton = new JButton("Add");
 	static JButton removeButton = new JButton("Remove");
 	static JFrame frame = new JFrame("Joseph's Dictionary");
+	static JPanel viewWord = new JPanel();
+	static JMenuBar menuBar = new JMenuBar();
 	
 	//main function
 	public static void main(String[] args) {
@@ -21,6 +26,9 @@ public class Dictionary extends JFrame {
 	private static void dictionaryWindow() {
 		frame.setSize(400, 300);
 		frame.setResizable(true);
+		frame.getContentPane().add(yellowLabel, BorderLayout.CENTER);
+		
+		frame.setJMenuBar(menuBar);
 		
 		//creates the remove and add button
 		buttons();
@@ -28,10 +36,13 @@ public class Dictionary extends JFrame {
 		//Views the words
 		mainViewWindow();
 		
+		//Create the search bar to search for words
 		search();
 		
+		//Creates the ascending and descending checkboxes
 		sort();
 		
+		//Creates the list of words in the scrollbox
 		viewWords();
 		
 		//closes the dictionary
@@ -48,7 +59,7 @@ public class Dictionary extends JFrame {
 	
 	//shows the main viewing window
 	private static void mainViewWindow() {
-		
+		frame.add(viewWord);
 	}
 	
 	// Shows the search bar of the function
