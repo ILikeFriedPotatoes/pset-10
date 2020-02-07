@@ -1,14 +1,12 @@
-//import javax.*;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
-
-import java.awt.BorderLayout;
-
+import javax.swing.SwingUtilities;
 import javax.swing.JButton;
 
 public class Dictionary extends JFrame {
 	
+	//Creates the graphical components of the app
 	static JPanel dictionaryWindow = new JPanel();
 	static JButton addButton = new JButton("Add");
 	static JButton removeButton = new JButton("Remove");
@@ -18,15 +16,19 @@ public class Dictionary extends JFrame {
 	
 	//main function
 	public static void main(String[] args) {
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				new MainFrame();
+				dictionaryWindow();
+			}	
+		});
 		dictionaryWindow();
 	}
 	
 	//creates the graphical application. Most code will go here.
 	
 	private static void dictionaryWindow() {
-		frame.setSize(400, 300);
-		frame.setResizable(true);
-		frame.getContentPane().add(yellowLabel, BorderLayout.CENTER);
+		
 		
 		frame.setJMenuBar(menuBar);
 		
@@ -45,8 +47,6 @@ public class Dictionary extends JFrame {
 		//Creates the list of words in the scrollbox
 		viewWords();
 		
-		//closes the dictionary
-		frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	private static void buttons() {
