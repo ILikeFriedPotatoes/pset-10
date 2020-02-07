@@ -14,7 +14,7 @@ public class MainFrame extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private JButton rmvBtn;
 	private JButton addBtn;
-	private TextPanel txtPnl;
+	private TxtPnl txtPnl;
 	// I might use this for the search bar later:
 	//private JTextArea textArea;
 	
@@ -82,7 +82,7 @@ public class MainFrame extends JFrame{
 	 * @createTxtPnl - creates the text panel
 	 */
 	private void createTxtPnl() {
-		txtPnl = new TextPanel();
+		txtPnl = new TxtPnl();
 	}
 	
 	/**

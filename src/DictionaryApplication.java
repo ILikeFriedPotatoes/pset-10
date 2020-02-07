@@ -1,6 +1,6 @@
 import javax.swing.SwingUtilities;
 
-public class Dictionary {
+public class DictionaryApplication {
 	
 	//main function
 	public static void main(String[] args) {
