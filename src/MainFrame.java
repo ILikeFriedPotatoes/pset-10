@@ -8,48 +8,90 @@ import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame{
 	
+	/**
+	 * I don't know why eclipse wants me to include this, but I will.
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton rmvBtn;
 	private JButton addBtn;
+	private TextPanel txtPnl;
 	// I might use this for the search bar later:
 	//private JTextArea textArea;
 	
+	
+	/**
+	 * Creates the mainframe for the application
+	 */
 	public MainFrame() {
 		super("Joseph's Dictionary");
 		
 		setLayout(new BorderLayout());
 			
+		createButtons();
+
 		showButtons();
 		
-		setSize(600, 500);
-		setResizable(true);
-		setVisible(true);
+		showFrame();
+		
+		createTxtPnl();
+		
+		showTxtPnl();
+
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	
+	/**
+	 * @showFrame deals with the graphical aspects of the frame
+	 */
 	
-	private void showButtons() {
+	private void showFrame() {
+		setSize(600, 500);
+		setResizable(true);
+		setVisible(true);
+	}
+	
+	/**
+	 * @createButtons is where all the buttons are made and their methods assigned
+	 */
+	private void createButtons() {
 		rmvBtn = new JButton("Remove");
 		addBtn = new JButton("Add");
 		
 		rmvBtn.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("does this work?");
+				System.out.println("remove");
 			}
-			
 		});
 		addBtn.addActionListener(new ActionListener() {
-
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("does this work?");
+				System.out.println("add");
 			}
-			
 		});
-		
-		add(rmvBtn, BorderLayout.NORTH);
-		add(addBtn, BorderLayout.NORTH);
 	}
 	
+	/**
+	 * This function deals with the graphical parts of the button
+	 */
+	private void showButtons() {
+		add(rmvBtn, BorderLayout.NORTH);
+		add(addBtn, BorderLayout.SOUTH);
+	}
+
+	/**
+	 * @createTxtPnl - creates the text panel
+	 */
+	private void createTxtPnl() {
+		txtPnl = new TextPanel();
+	}
+	
+	/**
+	 * @showTxtPnl - shows the text panel that displays the words
+	 */
+	private void showTxtPnl() {
+		add(txtPnl, BorderLayout.CENTER);
+	}
 }
+
+
 
