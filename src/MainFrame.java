@@ -15,8 +15,6 @@ public class MainFrame extends JFrame{
 	private JButton rmvBtn;
 	private JButton addBtn;
 	private TxtPnl txtPnl;
-	// I might use this for the search bar later:
-	//private JTextArea textArea;
 	
 	
 	/**
@@ -66,6 +64,7 @@ public class MainFrame extends JFrame{
 		addBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("add");
+				txtPnl.appendText("Test");
 			}
 		});
 	}
@@ -83,6 +82,7 @@ public class MainFrame extends JFrame{
 	 */
 	private void createTxtPnl() {
 		txtPnl = new TxtPnl();
+		
 	}
 	
 	/**
