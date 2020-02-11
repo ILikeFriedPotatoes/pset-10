@@ -12,9 +12,8 @@ public class MainFrame extends JFrame{
 	 * I don't know why eclipse wants me to include this, but I will.
 	 */
 	private static final long serialVersionUID = 1L;
-	private JButton rmvBtn;
-	private JButton addBtn;
 	private TxtPnl txtPnl;
+	private Toolbar toolbar;
 	
 	
 	/**
@@ -24,12 +23,12 @@ public class MainFrame extends JFrame{
 		super("Joseph's Dictionary");
 		
 		setLayout(new BorderLayout());
-			
-		createButtons();
-
-		showButtons();
 		
 		showFrame();
+		
+		makeToolbar();
+
+		showToolbar();
 		
 		createTxtPnl();
 		
@@ -48,35 +47,22 @@ public class MainFrame extends JFrame{
 		setResizable(true);
 		setVisible(true);
 	}
-	
 	/**
-	 * @createButtons is where all the buttons are made and their methods assigned
+	 * @makeToolbar creates the toolbar
 	 */
-	private void createButtons() {
-		rmvBtn = new JButton("Remove");
-		addBtn = new JButton("Add");
-		
-		rmvBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("remove");
-			}
-		});
-		addBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println("add");
-				txtPnl.appendText("Test");
-			}
-		});
+	private void makeToolbar() {
+		toolbar = new Toolbar();
+		toolbar.setTextPanel(txtPnl);
 	}
 	
 	/**
-	 * This function deals with the graphical parts of the button
+	 * @showToolbar adds the toolbar
 	 */
-	private void showButtons() {
-		add(rmvBtn, BorderLayout.NORTH);
-		add(addBtn, BorderLayout.SOUTH);
+	
+	private void showToolbar() {
+		add(toolbar, BorderLayout.NORTH);
 	}
-
+	
 	/**
 	 * @createTxtPnl - creates the text panel
 	 */
