@@ -44,6 +44,8 @@ public class Toolbar extends JPanel{
 		add(addBtn);
 	}
 
-	
+	public void setTextPanel(TxtPnl txtPnl) {
+		
+	}
 	
 }
