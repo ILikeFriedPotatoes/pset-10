@@ -1,10 +1,7 @@
+package graphical;
 import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JTextArea;
 
 import java.awt.BorderLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MainFrame extends JFrame{
 	
@@ -26,13 +23,13 @@ public class MainFrame extends JFrame{
 		
 		showFrame();
 		
-		makeToolbar();
-
-		showToolbar();
-		
 		createTxtPnl();
 		
 		showTxtPnl();
+		
+		makeToolbar();
+
+		showToolbar();
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -60,7 +57,7 @@ public class MainFrame extends JFrame{
 	 */
 	
 	private void showToolbar() {
-		add(toolbar, BorderLayout.NORTH);
+		add(toolbar, BorderLayout.WEST);
 	}
 	
 	/**

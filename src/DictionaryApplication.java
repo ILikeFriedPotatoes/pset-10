@@ -1,5 +1,7 @@
 import javax.swing.SwingUtilities;
 
+import graphical.MainFrame;
+
 public class DictionaryApplication {
 	
 	//main function

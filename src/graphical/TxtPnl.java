@@ -1,3 +1,4 @@
+package graphical;
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
@@ -5,18 +6,18 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class TxtPnl extends JPanel {
-	
-	private JTextArea searchBar;
+
+	private JTextArea textArea;
 	
 	public TxtPnl() {
-		searchBar = new JTextArea();
+		textArea = new JTextArea();
 		
 		setLayout(new BorderLayout());
 		
-		add(new JScrollPane(searchBar), BorderLayout.CENTER);
+		add(new JScrollPane(textArea), BorderLayout.CENTER);
 	}
 	
 	public void appendText(String text) {
-		searchBar.append("\n" + text + "\n");
+		textArea.append("\n" + text + "\n");
 	}
 }
