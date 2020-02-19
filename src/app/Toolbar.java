@@ -1,4 +1,4 @@
-package graphical;
+package app;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -6,21 +6,41 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-import util.AddWord;
-import util.RemoveWord;
+import javax.swing.JTextArea;
 
 public class Toolbar extends JPanel implements ActionListener {
 	private JButton rmvBtn;
 	private JButton addBtn;
-	private TxtPnl txtPnl;
-	private AddWord addWord;
-	private RemoveWord removeWord;
+	private Definition txtPnl;
+	private JPanel wordViewer;
+	private JTextArea searchBar;
+	private JButton ascending = new JButton();
+	private JButton descending = new JButton();
 	
 	public Toolbar() {
 		createButtons();
 		showButtons();
+		createSearchBar();
+		createWordViewer();
+		
 	}
+	
+	
+	/**
+	 * @createWordViewer the word viewer is made here and given functionality
+	 */
+	private void createWordViewer() {
+		wordViewer = new JPanel();
+	}
+	
+	/**
+	 * @createSearchBar the searchbar is made here and given functionality
+	 */
+	private void createSearchBar() {
+		searchBar = new JTextArea();
+	}
+	
+	
 	
 	/**
 	 * @createButtons is where all the buttons are made and their methods assigned
@@ -44,19 +64,10 @@ public class Toolbar extends JPanel implements ActionListener {
 	
 	public void actionPerformed(ActionEvent e) {
 		JButton clicked = (JButton) e.getSource();
-		addWord = new AddWord();
-		removeWord = new RemoveWord();
 		
-		if (clicked == rmvBtn) {
-			removeWord.removeWord(txtPnl);
-			txtPnl.appendText("Remove word");
-		} else if (clicked == addBtn) {
-			addWord.addWord();
-			txtPnl.appendText("Add word");
-		}
 	}
 
-	public void setTextPanel(TxtPnl txtPnl) {
+	public void setTextPanel(Definition txtPnl) {
 		this.txtPnl = txtPnl;
 	}
 	

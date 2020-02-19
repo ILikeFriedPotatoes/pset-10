@@ -1,31 +1,31 @@
-package graphical;
+package app;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
 
-public class MainFrame extends JFrame{
+public class DictionaryWindow extends JFrame{
 	
 	/**
 	 * I don't know why eclipse wants me to include this, but I will.
 	 */
 	private static final long serialVersionUID = 1L;
-	private TxtPnl txtPnl;
+	private Definition definition;
 	private Toolbar toolbar;
 	
 	
 	/**
 	 * Creates the mainframe for the application
 	 */
-	public MainFrame() {
+	public DictionaryWindow() {
 		super("Joseph's Dictionary");
 		
 		setLayout(new BorderLayout());
 		
 		showFrame();
 		
-		createTxtPnl();
+		createDefinition();
 		
-		showTxtPnl();
+		showDefinition();
 		
 		makeToolbar();
 
@@ -49,7 +49,7 @@ public class MainFrame extends JFrame{
 	 */
 	private void makeToolbar() {
 		toolbar = new Toolbar();
-		toolbar.setTextPanel(txtPnl);
+		toolbar.setTextPanel(definition);
 	}
 	
 	/**
@@ -63,16 +63,15 @@ public class MainFrame extends JFrame{
 	/**
 	 * @createTxtPnl - creates the text panel
 	 */
-	private void createTxtPnl() {
-		txtPnl = new TxtPnl();
-		
+	private void createDefinition() {
+		definition = new Definition();
 	}
 	
 	/**
 	 * @showTxtPnl - shows the text panel that displays the words
 	 */
-	private void showTxtPnl() {
-		add(txtPnl, BorderLayout.CENTER);
+	private void showDefinition() {
+		add(definition, BorderLayout.CENTER);
 	}
 }
 

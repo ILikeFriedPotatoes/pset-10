@@ -1,6 +1,6 @@
 import javax.swing.SwingUtilities;
 
-import graphical.MainFrame;
+import app.DictionaryWindow;
 
 public class DictionaryApplication {
 	
@@ -8,7 +8,7 @@ public class DictionaryApplication {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new MainFrame();
+				new DictionaryWindow();
 			}	
 		});
 	}
