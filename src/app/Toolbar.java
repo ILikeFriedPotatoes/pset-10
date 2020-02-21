@@ -46,6 +46,8 @@ public class Toolbar extends JPanel implements ActionListener {
 	
 	private void createWordViewer() {
 		wordViewer = new JScrollPane();
+		wordViewer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		add(wordViewer, BorderLayout.SOUTH);
 	}
 	
 	/**
@@ -61,7 +63,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	 */
 	
 	private void createDescending() {
-		descending = new JRadioButton();
+		descending = new JRadioButton("Desc");
 	}
 	
 	/**
@@ -76,7 +78,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	 * @createAscending makes the ascending button
 	 */
 	private void createAscending() {
-		ascending = new JRadioButton();
+		ascending = new JRadioButton("Asc");
 	}
 	
 	/**
@@ -91,7 +93,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	 * @createSearchBar the searchbar is made here and given functionality
 	 */
 	private void createSearchBar() {
-		searchBar = new JTextField();
+		searchBar = new JTextField("Search");
 	}
 	
 	/**

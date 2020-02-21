@@ -1,5 +1,7 @@
 package app;
 
-public class AddView {
+import javax.swing.JWindow;
+
+public class AddView extends JWindow {
 
 }

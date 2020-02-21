@@ -4,6 +4,6 @@ public class Words {
 	private String word;
 	private String definition;
 	private String partOfSpeech;
-	private String synonyms;
-	private String Antonyms;
+	private String[] synonyms;
+	private String[] antonyms;
 }
