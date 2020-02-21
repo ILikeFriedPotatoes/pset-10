@@ -9,7 +9,7 @@ public class DictionaryWindow extends JFrame{
 	 * I don't know why eclipse wants me to include this, but I will.
 	 */
 	private static final long serialVersionUID = 1L;
-	private Definition definition;
+	private DefinitionViewer definitionViewer;
 	private Toolbar toolbar;
 	
 	
@@ -49,7 +49,6 @@ public class DictionaryWindow extends JFrame{
 	 */
 	private void makeToolbar() {
 		toolbar = new Toolbar();
-		toolbar.setTextPanel(definition);
 	}
 	
 	/**
@@ -64,14 +63,14 @@ public class DictionaryWindow extends JFrame{
 	 * @createTxtPnl - creates the text panel
 	 */
 	private void createDefinition() {
-		definition = new Definition();
+		definitionViewer = new DefinitionViewer();
 	}
 	
 	/**
 	 * @showTxtPnl - shows the text panel that displays the words
 	 */
 	private void showDefinition() {
-		add(definition, BorderLayout.CENTER);
+		add(definitionViewer, BorderLayout.CENTER);
 	}
 }
 

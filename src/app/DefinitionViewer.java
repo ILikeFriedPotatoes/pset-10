@@ -5,9 +5,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-public class Definition extends JPanel {
+public class DefinitionViewer extends JPanel {
 	
-	public Definition() {
+	public DefinitionViewer() {
 		JPanel definitionWindow = new JPanel();
 		
 		setLayout(new BorderLayout());

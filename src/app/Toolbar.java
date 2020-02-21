@@ -7,17 +7,16 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class Toolbar extends JPanel implements ActionListener {
 	private JButton rmvBtn;
 	private JButton addBtn;
-	private Definition txtPnl;
-	private JPanel wordViewer;
 	private JTextField searchBar;
-	private JRadioButton ascending = new JRadioButton();
-	private JRadioButton descending = new JRadioButton();
+	private JRadioButton ascending;
+	private JRadioButton descending;
+	private JScrollPane wordViewer;
 	
 	public Toolbar() {
 		createButtons();
@@ -28,27 +27,64 @@ public class Toolbar extends JPanel implements ActionListener {
 		
 		showSearchBar();
 		
+		createAscending();
+		
+		showAscending();
+		
+		createDescending();
+		
+		showDescending();
+		
 		createWordViewer();
 		
 		showWordViewer();
-		
 	}
 	
-	
 	/**
-	 * @createWordViewer the word viewer is made here and given functionality
+	 * @createWordViewer makes the word viewer
 	 */
+	
 	private void createWordViewer() {
-		wordViewer = new JPanel();
+		wordViewer = new JScrollPane();
 	}
 	
 	/**
-	 * @showWordViewer shows the word viewer and adds graphics
+	 * @showWordViewer deals with the graphical components of the word viewer
 	 */
 	
 	private void showWordViewer() {
-		setLayout(new FlowLayout(FlowLayout.LEFT));
 		add(wordViewer);
+	}
+	
+	/**
+	 * @createDescending makes the descending button
+	 */
+	
+	private void createDescending() {
+		descending = new JRadioButton();
+	}
+	
+	/**
+	 * @showDescending shows the descending button
+	 */
+	
+	private void showDescending() {
+		add(descending);
+	}
+	
+	/**
+	 * @createAscending makes the ascending button
+	 */
+	private void createAscending() {
+		ascending = new JRadioButton();
+	}
+	
+	/**
+	 * @showAscending deals with the graphics
+	 */
+	private void showAscending() {
+		setLayout(new FlowLayout(FlowLayout.LEADING));
+		add(ascending, BorderLayout.CENTER);
 	}
 	
 	/**
@@ -63,8 +99,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	 */
 	
 	private void showSearchBar() {
-		setLayout(new FlowLayout(FlowLayout.CENTER));
-		add(searchBar, BorderLayout.CENTER);
+		add(searchBar);
 	}
 	
 	/**
@@ -88,12 +123,8 @@ public class Toolbar extends JPanel implements ActionListener {
 	}
 	
 	public void actionPerformed(ActionEvent e) {
+		//getText function can get the text in a search bar
 		JButton clicked = (JButton) e.getSource();
 		
 	}
-
-	public void setTextPanel(Definition txtPnl) {
-		this.txtPnl = txtPnl;
-	}
-	
 }
