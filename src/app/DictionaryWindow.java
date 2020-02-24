@@ -2,6 +2,8 @@ package app;
 import javax.swing.JFrame;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 
 public class DictionaryWindow extends JFrame{
 	
@@ -9,8 +11,8 @@ public class DictionaryWindow extends JFrame{
 	 * I don't know why eclipse wants me to include this, but I will.
 	 */
 	private static final long serialVersionUID = 1L;
-	private DefinitionViewer definitionViewer;
-	private Toolbar toolbar;
+	private static DefinitionViewer definitionViewer;
+	private static Toolbar toolbar;
 	
 	
 	/**
@@ -18,18 +20,18 @@ public class DictionaryWindow extends JFrame{
 	 */
 	public DictionaryWindow() {
 		super("Joseph's Dictionary");
-		
-		setLayout(new BorderLayout());
+		setLayout(new GridBagLayout());
+		GridBagConstraints gridLayout = new GridBagConstraints();
 		
 		showFrame();
 		
 		createDefinition();
 		
-		showDefinition();
+		add(definitionViewer, gridLayout);
 		
 		makeToolbar();
 
-		showToolbar();
+		add(toolbar, gridLayout);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -52,27 +54,9 @@ public class DictionaryWindow extends JFrame{
 	}
 	
 	/**
-	 * @showToolbar adds the toolbar
-	 */
-	
-	private void showToolbar() {
-		add(toolbar, BorderLayout.WEST);
-	}
-	
-	/**
 	 * @createTxtPnl - creates the text panel
 	 */
 	private void createDefinition() {
 		definitionViewer = new DefinitionViewer();
 	}
-	
-	/**
-	 * @showTxtPnl - shows the text panel that displays the words
-	 */
-	private void showDefinition() {
-		add(definitionViewer, BorderLayout.CENTER);
-	}
 }
-
-
-

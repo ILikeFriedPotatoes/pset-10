@@ -1,6 +1,7 @@
 package app;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,8 +18,11 @@ public class Toolbar extends JPanel implements ActionListener {
 	private JRadioButton ascending;
 	private JRadioButton descending;
 	private JScrollPane wordViewer;
+	private GridLayout toolbarGrid;
 	
 	public Toolbar() {
+		toolbarGrid = new GridLayout(0, 2);
+		
 		createButtons();
 	
 		showButtons();
@@ -47,7 +51,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	private void createWordViewer() {
 		wordViewer = new JScrollPane();
 		wordViewer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		add(wordViewer, BorderLayout.SOUTH);
+		add(wordViewer, toolbarGrid);
 	}
 	
 	/**
@@ -55,7 +59,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	 */
 	
 	private void showWordViewer() {
-		add(wordViewer);
+		add(wordViewer, toolbarGrid);
 	}
 	
 	/**
@@ -71,7 +75,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	 */
 	
 	private void showDescending() {
-		add(descending);
+		add(descending, toolbarGrid);
 	}
 	
 	/**
@@ -101,7 +105,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	 */
 	
 	private void showSearchBar() {
-		add(searchBar);
+		add(searchBar, toolbarGrid);
 	}
 	
 	/**
@@ -120,8 +124,8 @@ public class Toolbar extends JPanel implements ActionListener {
 	 */
 	private void showButtons() {
 		setLayout(new FlowLayout(FlowLayout.LEFT));
-		add(addBtn);
-		add(rmvBtn);
+		add(addBtn, toolbarGrid);
+		add(rmvBtn, toolbarGrid);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
