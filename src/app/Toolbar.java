@@ -1,6 +1,7 @@
 package app;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.GridBagConstraints;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,30 +13,48 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 
 public class Toolbar extends JPanel implements ActionListener {
+	/**
+	 * Eclipse told me to add this
+	 */
+	private static final long serialVersionUID = 1L;
 	private JButton rmvBtn;
 	private JButton addBtn;
 	private JTextField searchBar;
 	private JRadioButton ascending;
 	private JRadioButton descending;
 	private JScrollPane wordViewer;
-	private GridLayout toolbarGrid;
+	private GridBagConstraints gridLayout;
 	
 	public Toolbar() {
-		toolbarGrid = new GridLayout(0, 2);
+		//I only want two columns for the grid
+		gridLayout = new GridBagConstraints();
+		
+		gridLayout.weightx = 1;
+		gridLayout.weighty = 1;
+		gridLayout.fill = GridBagConstraints.HORIZONTAL;
+		gridLayout.gridx = 0;
+		gridLayout.gridy = 0;
 		
 		createButtons();
 	
-		showButtons();
+		add(addBtn, gridLayout);
+		add(rmvBtn, gridLayout);
 		
 		createSearchBar();
 		
-		showSearchBar();
+		gridLayout.gridx = 1;
+		gridLayout.gridy = 1;
+		
+		add(searchBar, gridLayout);
 		
 		createAscending();
 		
-		showAscending();
-		
 		createDescending();
+		
+		gridLayout.gridx = 2;
+		gridLayout.gridy = 0;
+		
+		showAscending();
 		
 		showDescending();
 		
@@ -51,7 +70,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	private void createWordViewer() {
 		wordViewer = new JScrollPane();
 		wordViewer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		add(wordViewer, toolbarGrid);
+		add(wordViewer);
 	}
 	
 	/**
@@ -59,7 +78,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	 */
 	
 	private void showWordViewer() {
-		add(wordViewer, toolbarGrid);
+		add(wordViewer);
 	}
 	
 	/**
@@ -75,7 +94,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	 */
 	
 	private void showDescending() {
-		add(descending, toolbarGrid);
+		add(descending);
 	}
 	
 	/**
@@ -89,7 +108,6 @@ public class Toolbar extends JPanel implements ActionListener {
 	 * @showAscending deals with the graphics
 	 */
 	private void showAscending() {
-		setLayout(new FlowLayout(FlowLayout.LEADING));
 		add(ascending, BorderLayout.CENTER);
 	}
 	
@@ -101,14 +119,6 @@ public class Toolbar extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * @showSearchBar deals with the graphical aspects of the search bar
-	 */
-	
-	private void showSearchBar() {
-		add(searchBar, toolbarGrid);
-	}
-	
-	/**
 	 * @createButtons is where all the buttons are made and their methods assigned
 	 */
 	private void createButtons() {
@@ -117,15 +127,6 @@ public class Toolbar extends JPanel implements ActionListener {
 		
 		rmvBtn.addActionListener(this);
 		addBtn.addActionListener(this);
-	}
-	
-	/**
-	 * This function deals with the graphical parts of the button
-	 */
-	private void showButtons() {
-		setLayout(new FlowLayout(FlowLayout.LEFT));
-		add(addBtn, toolbarGrid);
-		add(rmvBtn, toolbarGrid);
 	}
 	
 	public void actionPerformed(ActionEvent e) {

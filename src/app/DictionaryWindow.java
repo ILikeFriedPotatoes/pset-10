@@ -1,7 +1,5 @@
 package app;
 import javax.swing.JFrame;
-
-import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -27,10 +25,14 @@ public class DictionaryWindow extends JFrame{
 		
 		createDefinition();
 		
+		gridLayout.gridx = 1;
+		gridLayout.gridy = 0;
 		add(definitionViewer, gridLayout);
 		
 		makeToolbar();
 
+		gridLayout.gridx = 0;
+		gridLayout.gridy = 0;
 		add(toolbar, gridLayout);
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
