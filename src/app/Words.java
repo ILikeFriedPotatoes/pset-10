@@ -1,4 +1,6 @@
 package app;
+import java.io.FileReader;
+import java.util.ArrayList;
 
 public class Words {
 	private String word;
@@ -12,4 +14,16 @@ public class Words {
 		this.synonyms = synonyms;
 		this.antonyms = antonyms;
 	}
+	
+	public String getWord() {
+        return word;
+    }
+    
+    public String[] getSyn() {
+        return synonyms;
+    }
+    
+    public String[] getAnt() {
+        return antonyms;
+    }
 }

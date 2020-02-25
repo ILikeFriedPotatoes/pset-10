@@ -49,7 +49,10 @@ public class DictionaryWindow extends JFrame{
 		gridLayout.gridwidth = 2;
 		gridLayout.gridx = 0;
 		gridLayout.gridy = 1;
+		gridLayout.ipadx = 100;
 		add(Toolbar.searchBar, gridLayout);
+		gridLayout.gridwidth = 1;
+		gridLayout.ipadx = 0;
 		
 		gridLayout.gridx = 1;
 		gridLayout.gridy = 2;
@@ -61,6 +64,10 @@ public class DictionaryWindow extends JFrame{
 		gridLayout.gridx = 0;
 		gridLayout.gridy = 3;
 		gridLayout.gridwidth = 2;
+		gridLayout.weightx = 1;
+		gridLayout.weighty = 1;
+		gridLayout.ipadx = 20;
+		gridLayout.ipady = 20;
 		add(Toolbar.wordViewer, gridLayout);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
