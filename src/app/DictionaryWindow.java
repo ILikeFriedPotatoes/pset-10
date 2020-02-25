@@ -51,14 +51,17 @@ public class DictionaryWindow extends JFrame{
 		gridLayout.gridy = 1;
 		add(Toolbar.searchBar, gridLayout);
 		
-		gridLayout.gridx = 0;
+		gridLayout.gridx = 1;
 		gridLayout.gridy = 2;
 		add(Toolbar.descending, gridLayout);
 		
-		gridLayout.gridx = 1;
+		gridLayout.gridx = 0;
 		add(Toolbar.ascending, gridLayout);
 		
-		
+		gridLayout.gridx = 0;
+		gridLayout.gridy = 3;
+		gridLayout.gridwidth = 2;
+		add(Toolbar.wordViewer, gridLayout);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
