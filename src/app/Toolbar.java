@@ -17,50 +17,24 @@ public class Toolbar extends JPanel implements ActionListener {
 	 * Eclipse told me to add this
 	 */
 	private static final long serialVersionUID = 1L;
-	private JButton rmvBtn;
-	private JButton addBtn;
-	private JTextField searchBar;
-	private JRadioButton ascending;
-	private JRadioButton descending;
-	private JScrollPane wordViewer;
-	private GridBagConstraints gridLayout;
+	public static JButton rmvBtn;
+	public static JButton addBtn;
+	public static JTextField searchBar;
+	public static JRadioButton ascending;
+	public static JRadioButton descending;
+	public static JScrollPane wordViewer;
 	
 	public Toolbar() {
-		//I only want two columns for the grid
-		gridLayout = new GridBagConstraints();
-		
-		gridLayout.weightx = 1;
-		gridLayout.weighty = 1;
-		gridLayout.fill = GridBagConstraints.HORIZONTAL;
-		gridLayout.gridx = 0;
-		gridLayout.gridy = 0;
 		
 		createButtons();
-	
-		add(addBtn, gridLayout);
-		add(rmvBtn, gridLayout);
 		
 		createSearchBar();
-		
-		gridLayout.gridx = 1;
-		gridLayout.gridy = 1;
-		
-		add(searchBar, gridLayout);
 		
 		createAscending();
 		
 		createDescending();
 		
-		gridLayout.gridx = 2;
-		gridLayout.gridy = 0;
-		
-		showAscending();
-		
-		showDescending();
-		
 		createWordViewer();
-		
-		showWordViewer();
 	}
 	
 	/**
@@ -74,14 +48,6 @@ public class Toolbar extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * @showWordViewer deals with the graphical components of the word viewer
-	 */
-	
-	private void showWordViewer() {
-		add(wordViewer);
-	}
-	
-	/**
 	 * @createDescending makes the descending button
 	 */
 	
@@ -90,25 +56,10 @@ public class Toolbar extends JPanel implements ActionListener {
 	}
 	
 	/**
-	 * @showDescending shows the descending button
-	 */
-	
-	private void showDescending() {
-		add(descending);
-	}
-	
-	/**
 	 * @createAscending makes the ascending button
 	 */
 	private void createAscending() {
 		ascending = new JRadioButton("Asc");
-	}
-	
-	/**
-	 * @showAscending deals with the graphics
-	 */
-	private void showAscending() {
-		add(ascending, BorderLayout.CENTER);
 	}
 	
 	/**

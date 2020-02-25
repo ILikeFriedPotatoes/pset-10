@@ -25,16 +25,41 @@ public class DictionaryWindow extends JFrame{
 		
 		createDefinition();
 		
-		gridLayout.gridx = 1;
+		gridLayout.gridx = 2;
 		gridLayout.gridy = 0;
+		gridLayout.gridheight = 3;
+		gridLayout.fill = GridBagConstraints.VERTICAL;
 		add(definitionViewer, gridLayout);
+		gridLayout.fill = GridBagConstraints.NONE;
+		
+		gridLayout.gridheight = 1;
 		
 		makeToolbar();
 
 		gridLayout.gridx = 0;
 		gridLayout.gridy = 0;
+		
 		add(toolbar, gridLayout);
+		add(Toolbar.addBtn, gridLayout);
+		
+		gridLayout.gridx = 1;
+		gridLayout.gridy = 0;
+		add(Toolbar.rmvBtn, gridLayout);
 
+		gridLayout.gridwidth = 2;
+		gridLayout.gridx = 0;
+		gridLayout.gridy = 1;
+		add(Toolbar.searchBar, gridLayout);
+		
+		gridLayout.gridx = 0;
+		gridLayout.gridy = 2;
+		add(Toolbar.descending, gridLayout);
+		
+		gridLayout.gridx = 1;
+		add(Toolbar.ascending, gridLayout);
+		
+		
+		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
