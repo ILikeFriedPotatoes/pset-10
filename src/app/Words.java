@@ -4,13 +4,13 @@ import java.util.ArrayList;
 
 public class Words {
 	private String word;
-	private String Definition;
-	private String[] synonyms;
-	private String[] antonyms;
+	private ArrayList<String> Definitions;
+	private ArrayList<String> synonyms;
+	private ArrayList<String> antonyms;
 	
-	public Words(String word, String Definition, String[] synonyms, String[] antonyms) {
+	public Words(String word, ArrayList<String> Definition, ArrayList<String> synonyms, ArrayList<String> antonyms) {
 		this.word = word;
-		this.Definition = Definition;
+		this.Definitions = Definition;
 		this.synonyms = synonyms;
 		this.antonyms = antonyms;
 	}
@@ -19,11 +19,16 @@ public class Words {
         return word;
     }
     
-    public String[] getSyn() {
+    public ArrayList<String> getSyn() {
         return synonyms;
     }
     
-    public String[] getAnt() {
+    public ArrayList<String> getAnt() {
         return antonyms;
     }
+    
+    public ArrayList<String> getDefinitions() {
+    	return Definitions;
+    }
+    
 }
