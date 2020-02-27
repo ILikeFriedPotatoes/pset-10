@@ -19,56 +19,57 @@ public class DictionaryWindow extends JFrame{
 	public DictionaryWindow() {
 		super("Joseph's Dictionary");
 		setLayout(new GridBagLayout());
-		GridBagConstraints gridLayout = new GridBagConstraints();
+		GridBagConstraints gbc = new GridBagConstraints();
 		
 		showFrame();
 		
 		createDefinition();
 		
-		gridLayout.gridx = 2;
-		gridLayout.gridy = 0;
-		gridLayout.gridheight = 3;
-		gridLayout.fill = GridBagConstraints.VERTICAL;
-		add(definitionViewer, gridLayout);
-		gridLayout.fill = GridBagConstraints.NONE;
+		gbc.weightx = 6;
+		gbc.weighty = 1;
+		gbc.gridx = 2;
+		gbc.gridy = 0;
+		gbc.gridheight = 4;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(definitionViewer, gbc);
+		gbc.gridheight = 1;
 		
-		gridLayout.gridheight = 1;
-		
+		gbc.weightx = 1;
+		gbc.weighty = 0.1;
 		makeToolbar();
+		add(toolbar, gbc);
+		
+		gbc.weightx = 1;
+		gbc.weighty = 0.1;
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		add(Toolbar.addBtn, gbc);
+		
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		add(Toolbar.rmvBtn, gbc);
 
-		gridLayout.gridx = 0;
-		gridLayout.gridy = 0;
+		gbc.weighty = 0.1;
+		gbc.gridwidth = 2;
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		add(Toolbar.searchBar, gbc);
+		gbc.gridwidth = 1;
 		
-		add(toolbar, gridLayout);
-		add(Toolbar.addBtn, gridLayout);
+		gbc.weighty = 0.1;
+		gbc.gridx = 1;
+		gbc.gridy = 2;
+		add(Toolbar.descending, gbc);
 		
-		gridLayout.gridx = 1;
-		gridLayout.gridy = 0;
-		add(Toolbar.rmvBtn, gridLayout);
-
-		gridLayout.gridwidth = 2;
-		gridLayout.gridx = 0;
-		gridLayout.gridy = 1;
-		gridLayout.ipadx = 100;
-		add(Toolbar.searchBar, gridLayout);
-		gridLayout.gridwidth = 1;
-		gridLayout.ipadx = 0;
+		gbc.gridx = 0;
+		add(Toolbar.ascending, gbc);
 		
-		gridLayout.gridx = 1;
-		gridLayout.gridy = 2;
-		add(Toolbar.descending, gridLayout);
-		
-		gridLayout.gridx = 0;
-		add(Toolbar.ascending, gridLayout);
-		
-		gridLayout.gridx = 0;
-		gridLayout.gridy = 3;
-		gridLayout.gridwidth = 2;
-		gridLayout.weightx = 1;
-		gridLayout.weighty = 1;
-		gridLayout.ipadx = 20;
-		gridLayout.ipady = 20;
-		add(Toolbar.wordViewer, gridLayout);
+		gbc.weighty = 5;
+		gbc.gridx = 0;
+		gbc.gridy = 3;
+		gbc.gridwidth = 2;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(Toolbar.wordViewer, gbc);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
