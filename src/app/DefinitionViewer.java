@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+
 public class DefinitionViewer extends JPanel {
 	
 	public DefinitionViewer() {
@@ -14,4 +15,5 @@ public class DefinitionViewer extends JPanel {
 		
 		add(new JScrollPane(definitionWindow), BorderLayout.CENTER);
 	}
+
 }
