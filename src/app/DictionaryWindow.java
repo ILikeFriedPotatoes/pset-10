@@ -1,5 +1,7 @@
 package app;
+
 import javax.swing.JFrame;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -11,7 +13,6 @@ public class DictionaryWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static DefinitionViewer definitionViewer;
 	private static Toolbar toolbar;
-	
 	
 	/**
 	 * Creates the mainframe for the application
