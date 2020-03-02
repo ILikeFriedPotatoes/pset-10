@@ -1,8 +1,4 @@
 package app;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridBagConstraints;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -76,13 +72,28 @@ public class Toolbar extends JPanel implements ActionListener {
 		rmvBtn = new JButton("Remove");
 		addBtn = new JButton("Add");
 		
-		rmvBtn.addActionListener(this);
-		addBtn.addActionListener(this);
+		addWord addWord = new addWord();
+		rmvWord rmvWord = new rmvWord();
+		
+		rmvBtn.addActionListener(rmvWord);
+		addBtn.addActionListener(addWord);
 	}
 	
 	public void actionPerformed(ActionEvent e) {
 		//getText function can get the text in a search bar
 		JButton clicked = (JButton) e.getSource();
-		
+		System.out.println("Test");
+	}
+	
+	private class addWord implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Add word");
+		}
+	}
+	
+	private class rmvWord implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			System.out.println("Remove word");
+		}
 	}
 }
