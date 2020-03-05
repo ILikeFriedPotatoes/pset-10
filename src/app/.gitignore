@@ -4,3 +4,5 @@
 /Toolbar.class
 /Words.class
 /Definition.class
+/Toolbar$addWord.class
+/Toolbar$rmvWord.class
