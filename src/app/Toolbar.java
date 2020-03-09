@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.swing.JButton;
+import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
@@ -21,7 +22,9 @@ public class Toolbar extends JPanel implements ActionListener {
 	public static JRadioButton ascending;
 	public static JRadioButton descending;
 	public static JScrollPane wordViewer;
+	public Words[] tbWords;
 	public Words[] displayWords;
+	public JList wordsList = new JList(Utils.parseWords(tbWords));
 	
 	public Toolbar() {
 		
