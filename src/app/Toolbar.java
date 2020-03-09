@@ -1,6 +1,8 @@
 package app;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -19,6 +21,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	public static JRadioButton ascending;
 	public static JRadioButton descending;
 	public static JScrollPane wordViewer;
+	public Words[] displayWords;
 	
 	public Toolbar() {
 		
@@ -85,6 +88,22 @@ public class Toolbar extends JPanel implements ActionListener {
 		System.out.println("Test");
 	}
 	
+	private void search() {
+		String searchTerm = searchBar.getText().toLowerCase();
+		ArrayList<Words> filteredWords = new ArrayList<Words>();
+	    ArrayList<Integer> sort = new ArrayList<Integer>();
+	    ArrayList<Integer> sorted = new ArrayList<Integer>();
+	    
+	    for (Words word: getDisplayWords()) {
+            if (word.getWord().contains(searchTerm)) {
+                filteredWords.add(word);
+                sort.add(word.getWord().indexOf(searchTerm));
+                sorted.add(word.getWord().indexOf(searchTerm));
+            }
+        }
+        Collections.sort(sorted);
+	}
+	
 	private class addWord implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			System.out.println("Add word");
@@ -96,4 +115,8 @@ public class Toolbar extends JPanel implements ActionListener {
 			System.out.println("Remove word");
 		}
 	}
+	
+	public Words[] getDisplayWords() {
+        return displayWords;
+    }
 }
