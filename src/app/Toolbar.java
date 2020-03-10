@@ -2,7 +2,9 @@ package app;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import com.google.gson.*;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -24,6 +26,7 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener,
 	public static Words[] tbWords;
 	public Words[] displayWords;
 	public static JList wordsList;
+	private Words[] words;
 	//public JList wordsList = new JList(Utilities.parseWords(tbWords));
 	
 	public Toolbar() {
@@ -85,6 +88,31 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener,
 		rmvBtn.addActionListener(rmvWord);
 		addBtn.addActionListener(addWord);
 	}
+	
+	private void addWord(Words newWord) {
+		Words[] newWordsList = Arrays.copyOf(getWords(), getWords().length + 1);
+		newWordsList[newWordsList.length - 1] = newWord;
+        setWords(newWordsList);
+        Utils.sortWords(getWords());
+        saveWords();
+	}
+	
+	public Words[] getWords() {
+        return this.words;
+    }
+	
+	public void setWords(Words[] words) {
+        this.words = words;
+    }
+	
+	public void saveWords() {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+        try (Writer writer = new FileWriter(System.getProperty("user.dir") + File.separator + "words.json")) {
+            gson.toJson(words, writer);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 	
 	public void actionPerformed(ActionEvent e) {
 		//getText function can get the text in a search bar
