@@ -4,14 +4,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import javax.swing.JButton;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
-public class Toolbar extends JPanel implements ActionListener {
+public class Toolbar extends JPanel implements ActionListener, DocumentListener {
 	/**
 	 * Eclipse told me to add this
 	 */
@@ -24,7 +23,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	public static JScrollPane wordViewer;
 	public Words[] tbWords;
 	public Words[] displayWords;
-	public JList wordsList = new JList(Utilities.parseWords(tbWords));
+	//public JList wordsList = new JList(Utilities.parseWords(tbWords));
 	
 	public Toolbar() {
 		
@@ -46,6 +45,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	private void createWordViewer() {
 		wordViewer = new JScrollPane();
 		wordViewer.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		searchBar.getDocument().addDocumentListener(this);
 		add(wordViewer);
 	}
 	
@@ -122,4 +122,22 @@ public class Toolbar extends JPanel implements ActionListener {
 	public Words[] getDisplayWords() {
         return displayWords;
     }
+
+	@Override
+	public void insertUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void changedUpdate(DocumentEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }
