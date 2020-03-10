@@ -18,6 +18,7 @@ public class DictionaryWindow extends JFrame{
 	/**
 	 * Creates the mainframe for the application
 	 */
+	@SuppressWarnings("unchecked")
 	public DictionaryWindow() {
 		super("Joseph's Dictionary");
 		setLayout(new GridBagLayout());
@@ -73,7 +74,7 @@ public class DictionaryWindow extends JFrame{
 		gbc.fill = GridBagConstraints.BOTH;
 		add(Toolbar.wordViewer, gbc);
 		
-		Toolbar.wordsList = new JList(Utils.parseWords(Toolbar.tbWords));
+		Toolbar.wordsList = new JList<Object>(Utils.parseWords(Toolbar.tbWords));
         gbc.gridy = 4;
         gbc.gridx = 0;
         gbc.gridwidth = 2;
