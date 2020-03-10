@@ -1,6 +1,7 @@
 package app;
 
 import javax.swing.JFrame;
+import javax.swing.JList;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -71,6 +72,13 @@ public class DictionaryWindow extends JFrame{
 		gbc.gridwidth = 2;
 		gbc.fill = GridBagConstraints.BOTH;
 		add(Toolbar.wordViewer, gbc);
+		
+		Toolbar.wordsList = new JList(Utils.parseWords(Toolbar.tbWords));
+        gbc.gridy = 4;
+        gbc.gridx = 0;
+        gbc.gridwidth = 2;
+        add(Toolbar.wordsList, gbc);
+        setVisible(true);
 		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}

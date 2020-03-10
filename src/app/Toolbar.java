@@ -21,8 +21,9 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener 
 	public static JRadioButton ascending;
 	public static JRadioButton descending;
 	public static JScrollPane wordViewer;
-	public Words[] tbWords;
+	public static Words[] tbWords;
 	public Words[] displayWords;
+	public static JList wordsList;
 	//public JList wordsList = new JList(Utilities.parseWords(tbWords));
 	
 	public Toolbar() {
@@ -107,25 +108,22 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener 
         Collections.sort(sorted);
         
         ArrayList<Words> sortedWrds = new ArrayList<Words>();
-        while(filteredWords.size() > 0) {
-        	
+        while(filteredWords.size() > 0) {	
         	for (int i = 0; i < sort.size(); i++) {
-        		
                 if (sorted.get(0) == sort.get(i)) {
                     sortedWrds.add(filteredWords.get(i));
                     sorted.remove(0);
                     sort.remove(i);
                     filteredWords.remove(i);
                 }
-                
             }
-        	// After the for loop
         }
         Words[] results = new Words[sortedWrds.size()];
         for (int i = 0; i < results.length; i++) {
             results[i] = sortedWrds.get(i);
         }
         setTBWords(results);
+        remove(wordsList);
 	}
 	
 	private class addWord implements ActionListener {
@@ -165,4 +163,6 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener 
 	private void setTBWords(Words[] tbWords) {
         this.tbWords = tbWords;
     }
+	
+	
 }

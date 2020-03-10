@@ -1,7 +1,6 @@
 package app;
 
 public class Utilities {
-	/** Fix this method
 	public static String[] parseWords(Words[] words) {
 		String[] onlyWords = new String[words.length];
 		for(int i = 0; i < words.length; i ++) {
@@ -9,5 +8,4 @@ public class Utilities {
 		}
 		return onlyWords;
 	}
-	*/
 }
