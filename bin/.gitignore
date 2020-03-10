@@ -8,5 +8,9 @@
 /addWord.class
 /rmvWord.class
 /selectWord.class
-/app/
+/.classpath
+/.gitignore
+/.project
 /DictionaryApplication/
+/app/
+/words.json

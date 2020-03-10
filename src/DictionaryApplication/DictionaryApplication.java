@@ -1,7 +1,6 @@
 package DictionaryApplication;
   
 import javax.swing.SwingUtilities;
-
 import app.DictionaryWindow;
 
 public class DictionaryApplication {
@@ -11,7 +10,7 @@ public class DictionaryApplication {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				new DictionaryWindow();
-			}	
+			}
 		});
 	}
 }

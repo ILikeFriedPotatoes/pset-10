@@ -24,7 +24,7 @@ public class Toolbar extends JPanel implements ActionListener {
 	public static JScrollPane wordViewer;
 	public Words[] tbWords;
 	public Words[] displayWords;
-	public JList wordsList = new JList(Utils.parseWords(tbWords));
+	public JList wordsList = new JList(Utilities.parseWords(tbWords));
 	
 	public Toolbar() {
 		
