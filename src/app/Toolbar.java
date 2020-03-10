@@ -10,7 +10,7 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class Toolbar extends JPanel implements ActionListener, DocumentListener {
+public class Toolbar extends JPanel implements ActionListener, DocumentListener, ListSelectionListener {
 	/**
 	 * Eclipse told me to add this
 	 */
@@ -124,6 +124,7 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener 
         }
         setTBWords(results);
         remove(wordsList);
+        wordsList.addListSelectionListener(this);
 	}
 	
 	private class addWord implements ActionListener {
@@ -163,6 +164,12 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener 
 	private void setTBWords(Words[] tbWords) {
         this.tbWords = tbWords;
     }
+
+	@Override
+	public void valueChanged(ListSelectionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }

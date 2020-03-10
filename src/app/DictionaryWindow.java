@@ -81,6 +81,13 @@ public class DictionaryWindow extends JFrame{
         add(Toolbar.wordsList, gbc);
         setVisible(true);
 		
+        Toolbar.wordsList = new JList(Utils.parseWords(Toolbar.tbWords));
+        gbc.gridy = 4;
+        gbc.gridx = 0;
+        gbc.gridwidth = 2;
+        add(Toolbar.wordsList, gbc);
+        setVisible(true);
+        
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
