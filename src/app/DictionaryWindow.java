@@ -14,6 +14,7 @@ public class DictionaryWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static DefinitionViewer definitionViewer;
 	private static Toolbar toolbar;
+	GridBagConstraints gbc = new GridBagConstraints();
 	
 	/**
 	 * Creates the mainframe for the application
@@ -22,7 +23,6 @@ public class DictionaryWindow extends JFrame{
 	public DictionaryWindow() {
 		super("Joseph's Dictionary");
 		setLayout(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
 		
 		showFrame();
 		
