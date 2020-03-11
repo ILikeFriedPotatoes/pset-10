@@ -41,7 +41,7 @@ public class DefinitionViewer extends JPanel {
 		add(new JScrollPane(definitionWindow), BorderLayout.CENTER);
 	}
 	
-	public DefinitionViewer(String tbWord, Word[] tbWords) {
+	public DefinitionViewer(String tbWord, Words[] tbWords) {
         setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
         winWord = null;
@@ -55,6 +55,15 @@ public class DefinitionViewer extends JPanel {
         } else {
             showDefault();
         }
+    }
+	
+	private Words getWordFromString(String stringWord, Words[] tbWords) {
+        for (Words word: tbWords) {
+            if (word.getWord().equals(stringWord)) {
+                return word;
+            }
+        }
+        return null;
     }
 	
 	private void showDefault() {
@@ -85,6 +94,58 @@ public class DefinitionViewer extends JPanel {
         add(word, gbc);
         showAnts(showSyns(showDefs()));
         setVisible(true);
+    }
+	
+	private void showAnts(int totalLength) {
+        JLabel title = new JLabel();
+        String[] ants = winWord.getAnt();
+        if (ants.length > 1) {
+            title.setText("Antonyms");
+        } else if (ants.length == 1 && !ants[0].equals("")) {
+            title.setText("Antonym");
+        }
+        title.setFont(new Font(getFont().getName(), getFont().getStyle(), 30));
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = totalLength + 5;
+        if (ants.length > 0) {
+            add(title, gbc);
+        }
+        for (int i = 0; i < ants.length; i++) {
+            JLabel ant = new JLabel(ants[i]);
+            ant.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
+            gbc.gridx = 0;
+            gbc.gridy = i + totalLength + 6;
+            add(ant, gbc);
+        }
+    }
+	
+	private int showSyns(int defLength) {
+        JLabel title = new JLabel();
+        String[] syns = winWord.getSyn();
+        if (syns.length > 1) {
+            title.setText("Synonyms");
+        } else if (syns.length == 1 && !syns[0].equals("")) {
+            title.setText("Synonym");
+        }
+        title.setFont(new Font(getFont().getName(), getFont().getStyle(), 30));
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridx = 0;
+        gbc.gridy = defLength;
+        if (syns.length > 0) {
+            add(title, gbc);
+        } else {
+            return defLength;
+        }
+        
+        for (int i = 0; i < syns.length; i++) {
+            JLabel syn = new JLabel(syns[i]);
+            syn.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
+            gbc.gridx = 0;
+            gbc.gridy = i + defLength + 5;
+            add(syn, gbc);
+        }
+        return syns.length + 1 + defLength;
     }
 	
 	private int showDefs() {
@@ -123,7 +184,7 @@ public class DefinitionViewer extends JPanel {
         return ((defs.length * 2) + 2);
     }
 	
-	private Word showAdd() {
+	private Words showAdd() {
         savedSyns = null;
         savedAnts = null;
         JLabel title = new JLabel();
@@ -152,6 +213,58 @@ public class DefinitionViewer extends JPanel {
         return winWord;
     }
 	
+	private void showAddSubmit() {        
+        submit = new JButton("Submit");
+        gbc.gridy = 11 + defFieldCount;
+        add(submit, gbc);
+    }
+	
+	private void showAddSyn() {
+        synsTitle = new JLabel();
+        synsTitle.setText("Synonyms");
+        synsTitle.setFont(new Font(getFont().getName(), getFont().getStyle(), 30));
+        gbc.gridy = 5 + defFieldCount;
+        add(synsTitle, gbc);
+        
+        synsInstructions = new JLabel();
+        synsInstructions.setText("Seperate with a comma and a space");
+        synsInstructions.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
+        gbc.gridy = 6 + defFieldCount;
+        add(synsInstructions, gbc);
+        
+        if (savedSyns == null) {
+            synsWord = new JTextField("");
+        } else {
+            synsWord = new JTextField(savedSyns);
+        }
+        synsWord.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
+        gbc.gridy = 7 + defFieldCount;
+        add(synsWord, gbc);
+    }
+    
+    private void showAddAnt() {
+        antsTitle = new JLabel();
+        antsTitle.setText("Antonyms");
+        antsTitle.setFont(new Font(getFont().getName(), getFont().getStyle(), 30));
+        gbc.gridy = 8 + defFieldCount;
+        add(antsTitle, gbc);
+        
+        antsInstructions = new JLabel();
+        antsInstructions.setText("Seperate with a comma and a space");
+        antsInstructions.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
+        gbc.gridy = 9 + defFieldCount;
+        add(antsInstructions, gbc);
+        
+        if (savedAnts == null) {
+            antsWord = new JTextField("");
+        } else {
+            antsWord = new JTextField(savedAnts);
+        }
+        antsWord.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
+        gbc.gridy = 10 + defFieldCount;
+        add(antsWord, gbc);
+    }
+	
 	private void showAddDef() {
         JLabel defTitle = new JLabel();
         defTitle.setText("Definitions");
@@ -165,7 +278,26 @@ public class DefinitionViewer extends JPanel {
         gbc.gridy = 4;
         add(plusButton, gbc);
         
-        addDefFeild();
+        addDefField();
     }
+	
+	private void addDefField() {
+        defFieldCount++;
+        JTextField addDef = new JTextField("");
+        addDef.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
+        gbc.gridx = 0;
+        gbc.gridy = 4 + defFieldCount;
+        add(addDef, gbc);
+        defs.add(addDef);
+        
+        defFieldCount++;
+        String[] partsOfSpeech = {"noun", "verb", "adjective", "adverb", "pronoun", "preposition", "conjunction", "interjection", "determiner"};
+        JComboBox addPOS = new JComboBox(partsOfSpeech);
+        gbc.gridy = 4 + defFieldCount;
+        add(addPOS, gbc);
+        POSs.add(addPOS);
+    }
+	
+	
 	
 }
