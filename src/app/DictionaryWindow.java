@@ -20,7 +20,6 @@ public class DictionaryWindow extends JFrame{
 	/**
 	 * Creates the mainframe for the application
 	 */
-	@SuppressWarnings("unchecked")
 	public DictionaryWindow(Words[] words) {
 		this.shownWords = words;
 		createView();
@@ -34,14 +33,7 @@ public class DictionaryWindow extends JFrame{
 		
 		createDefinition();
 		
-		gbc.weightx = 6;
-		gbc.weighty = 1;
-		gbc.gridx = 2;
-		gbc.gridy = 0;
-		gbc.gridheight = 4;
-		gbc.fill = GridBagConstraints.BOTH;
-		add(definitionViewer, gbc);
-		gbc.gridheight = 1;
+		createDefViewer();
 		
 		gbc.weightx = 1;
 		gbc.weighty = 0.1;
@@ -55,14 +47,15 @@ public class DictionaryWindow extends JFrame{
 		gbc.fill = GridBagConstraints.BOTH;
 		add(Toolbar.wordViewer, gbc);
 		
-		Toolbar.wordsList = new JList<Object>(Utils.parseWords(Toolbar.tbWords));
+		//This ideally should be fixed. It throws a null pointer exception
+		//Toolbar.wordsList = new JList<Object>(Utils.parseWords(Toolbar.tbWords));
         gbc.gridy = 4;
         gbc.gridx = 0;
         gbc.gridwidth = 2;
         add(Toolbar.wordsList, gbc);
         setVisible(true);
 		
-        Toolbar.wordsList = new JList(Utils.parseWords(Toolbar.tbWords));
+        Toolbar.wordsList = new JList<Object>(Utils.parseWords(Toolbar.tbWords));
         gbc.gridy = 4;
         gbc.gridx = 0;
         gbc.gridwidth = 2;
@@ -70,6 +63,20 @@ public class DictionaryWindow extends JFrame{
         setVisible(true);
         
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	/**
+	 * @createDefViewer makes the definition viewer and specifies the properties
+	 */
+	private void createDefViewer() {
+		gbc.weightx = 6;
+		gbc.weighty = 1;
+		gbc.gridx = 2;
+		gbc.gridy = 0;
+		gbc.gridheight = 4;
+		gbc.fill = GridBagConstraints.BOTH;
+		add(definitionViewer, gbc);
+		gbc.gridheight = 1;
 	}
 	
 	/**
@@ -85,18 +92,10 @@ public class DictionaryWindow extends JFrame{
 	 * @makeToolbar creates the toolbar
 	 */
 	private void makeToolbar() {
-		toolbar = new Toolbar();
-		
-		gbc.weightx = 1;
-		gbc.weighty = 0.1;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		add(Toolbar.addBtn, gbc);
-		
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		add(Toolbar.rmvBtn, gbc);
+		toolbar = new Toolbar(shownWords);
 
+		makeBtns();
+		
 		gbc.weighty = 0.1;
 		gbc.gridwidth = 2;
 		gbc.gridx = 0;
@@ -113,10 +112,30 @@ public class DictionaryWindow extends JFrame{
 		add(Toolbar.ascending, gbc);
 	}
 	
+	private void makeBtns() {
+		gbc.weightx = 1;
+		gbc.weighty = 0.1;
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		add(Toolbar.addBtn, gbc);
+		
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		add(Toolbar.rmvBtn, gbc);
+	}
+	
 	/**
-	 * @createTxtPnl - creates the text panel
+	 * @createTxtPnl - creates the definition viewer, which displays the definition of the selected word
 	 */
 	private void createDefinition() {
 		definitionViewer = new DefinitionViewer();
 	}
+	
+	public Words[] getDisplayWords() {
+        return shownWords;
+    }
+    
+    public void setDisplayWords(Words[] words) {
+        this.shownWords = words;
+    }
 }

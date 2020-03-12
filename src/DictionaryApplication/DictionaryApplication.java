@@ -1,11 +1,8 @@
 package DictionaryApplication;
   
 import java.io.*;
-
 import javax.swing.SwingUtilities;
-
 import com.google.gson.Gson;
-
 import app.DictionaryWindow;
 import app.Utils;
 import app.Words;

@@ -34,7 +34,7 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener,
 	private Words[] words;
 	//public JList wordsList = new JList(Utilities.parseWords(tbWords));
 
-	public Toolbar() {
+	public Toolbar(Words[] shownWords) {
 
 		createButtons();
 
