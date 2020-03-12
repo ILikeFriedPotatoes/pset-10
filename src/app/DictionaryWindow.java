@@ -20,8 +20,13 @@ public class DictionaryWindow extends JFrame{
 	 * Creates the mainframe for the application
 	 */
 	@SuppressWarnings("unchecked")
-	public DictionaryWindow() {
-		super("Joseph's Dictionary");
+	public DictionaryWindow(Words[] words) {
+		this
+		
+	}
+	
+	private void createView() {
+		setTitle("Joseph's Dictionary");
 		setLayout(new GridBagLayout());
 		
 		showFrame();
@@ -90,7 +95,6 @@ public class DictionaryWindow extends JFrame{
         
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-	
 	
 	/**
 	 * @showFrame deals with the graphical aspects of the frame
