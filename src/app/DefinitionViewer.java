@@ -6,18 +6,17 @@ import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.google.gson.*;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.*;
 
 public class DefinitionViewer extends JPanel {
-	
+
 	private Words winWord;
     private GridBagConstraints gbc;
     private int defFieldCount = 0;
-    
+
     private JTextField addWord;
     private ArrayList<JTextField> defs = new ArrayList<JTextField>();
     private ArrayList<JComboBox> POSs = new ArrayList<JComboBox>();
@@ -29,18 +28,18 @@ public class DefinitionViewer extends JPanel {
     private JLabel antsInstructions;
     private JButton submit;
     private JButton plusButton;
-    
+
     private String savedSyns;
     private String savedAnts;
-	
+
 	public DefinitionViewer() {
 		JPanel definitionWindow = new JPanel();
-		
+
 		setLayout(new BorderLayout());
-		
+
 		add(new JScrollPane(definitionWindow), BorderLayout.CENTER);
 	}
-	
+
 	public DefinitionViewer(String tbWord, Words[] tbWords) {
         setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
@@ -56,7 +55,7 @@ public class DefinitionViewer extends JPanel {
             showDefault();
         }
     }
-	
+
 	private Words getWordFromString(String stringWord, Words[] tbWords) {
         for (Words word: tbWords) {
             if (word.getWord().equals(stringWord)) {
@@ -65,11 +64,11 @@ public class DefinitionViewer extends JPanel {
         }
         return null;
     }
-	
+
 	private void showDefault() {
         setLayout(new GridBagLayout());
         GridBagConstraints gbc = new GridBagConstraints();
-        
+
         JLabel welcome = new JLabel();
         welcome.setText("WELCOME");
         welcome.setFont(new Font(getFont().getName(), getFont().getStyle(), 50));
@@ -77,7 +76,7 @@ public class DefinitionViewer extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 0;
         add(welcome, gbc);
-        
+
         JLabel message = new JLabel("Welcome to the graphical dictionary. You can look up words, add words, delete words, and sort words. Please rate us 5 stars on Application Store\u2122.");
         message.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
         gbc.gridy = 1;
@@ -95,7 +94,7 @@ public class DefinitionViewer extends JPanel {
         showAnts(showSyns(showDefs()));
         setVisible(true);
     }
-	
+
 	private void showAnts(int totalLength) {
         JLabel title = new JLabel();
         String[] ants = winWord.getAnt();
@@ -119,7 +118,7 @@ public class DefinitionViewer extends JPanel {
             add(ant, gbc);
         }
     }
-	
+
 	private int showSyns(int defLength) {
         JLabel title = new JLabel();
         String[] syns = winWord.getSyn();
@@ -137,7 +136,7 @@ public class DefinitionViewer extends JPanel {
         } else {
             return defLength;
         }
-        
+
         for (int i = 0; i < syns.length; i++) {
             JLabel syn = new JLabel(syns[i]);
             syn.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
@@ -147,7 +146,7 @@ public class DefinitionViewer extends JPanel {
         }
         return syns.length + 1 + defLength;
     }
-	
+
 	private int showDefs() {
         JLabel title = new JLabel();
         Definition[] defs = winWord.getDefinitions();
@@ -161,18 +160,18 @@ public class DefinitionViewer extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 1;
         add(title, gbc);
-        
+
         for (int i = 0; i < defs.length * 2; i++) {
             if (defs[i / 2] != null) {
                 String textPOS = ((i / 2) + 1) + ". " + winWord.getWord() + " (" + defs[i / 2].getPart() + ")";
                 String textDef = "          " + defs[i / 2].getDefinition();
-                
+
                 JLabel pos = new JLabel(textPOS);
                 pos.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
                 gbc.gridx = 0;
                 gbc.gridy = i + 2;
                 add(pos, gbc);
-                
+
                 i++;
                 JLabel def = new JLabel(textDef);
                 def.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
@@ -183,7 +182,7 @@ public class DefinitionViewer extends JPanel {
         }
         return ((defs.length * 2) + 2);
     }
-	
+
 	private Words showAdd() {
         savedSyns = null;
         savedAnts = null;
@@ -193,45 +192,45 @@ public class DefinitionViewer extends JPanel {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.gridy = 0;
         add(title, gbc);
-        
+
         JLabel wordTitle = new JLabel();
         wordTitle.setText("Word");
         wordTitle.setFont(new Font(getFont().getName(), getFont().getStyle(), 30));
         gbc.gridy = 2;
         add(wordTitle, gbc);
-        
+
         addWord = new JTextField("");
         addWord.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
         gbc.gridy = 3;
         add(addWord, gbc);
-        
+
         showAddDef();
         showAddSyn();
         showAddAnt();
         showAddSubmit();
-        
+
         return winWord;
     }
-	
-	private void showAddSubmit() {        
+
+	private void showAddSubmit() {
         submit = new JButton("Submit");
         gbc.gridy = 11 + defFieldCount;
         add(submit, gbc);
     }
-	
+
 	private void showAddSyn() {
         synsTitle = new JLabel();
         synsTitle.setText("Synonyms");
         synsTitle.setFont(new Font(getFont().getName(), getFont().getStyle(), 30));
         gbc.gridy = 5 + defFieldCount;
         add(synsTitle, gbc);
-        
+
         synsInstructions = new JLabel();
         synsInstructions.setText("Seperate with a comma and a space");
         synsInstructions.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
         gbc.gridy = 6 + defFieldCount;
         add(synsInstructions, gbc);
-        
+
         if (savedSyns == null) {
             synsWord = new JTextField("");
         } else {
@@ -241,20 +240,20 @@ public class DefinitionViewer extends JPanel {
         gbc.gridy = 7 + defFieldCount;
         add(synsWord, gbc);
     }
-    
+
     private void showAddAnt() {
         antsTitle = new JLabel();
         antsTitle.setText("Antonyms");
         antsTitle.setFont(new Font(getFont().getName(), getFont().getStyle(), 30));
         gbc.gridy = 8 + defFieldCount;
         add(antsTitle, gbc);
-        
+
         antsInstructions = new JLabel();
         antsInstructions.setText("Seperate with a comma and a space");
         antsInstructions.setFont(new Font(getFont().getName(), getFont().getStyle(), 15));
         gbc.gridy = 9 + defFieldCount;
         add(antsInstructions, gbc);
-        
+
         if (savedAnts == null) {
             antsWord = new JTextField("");
         } else {
@@ -264,7 +263,7 @@ public class DefinitionViewer extends JPanel {
         gbc.gridy = 10 + defFieldCount;
         add(antsWord, gbc);
     }
-	
+
 	private void showAddDef() {
         JLabel defTitle = new JLabel();
         defTitle.setText("Definitions");
@@ -272,15 +271,15 @@ public class DefinitionViewer extends JPanel {
         gbc.gridx = 0;
         gbc.gridy = 4;
         add(defTitle, gbc);
-                   
+
         plusButton = new JButton("+");
         gbc.gridx = 1;
         gbc.gridy = 4;
         add(plusButton, gbc);
-        
+
         addDefField();
     }
-	
+
 	private void addDefField() {
         defFieldCount++;
         JTextField addDef = new JTextField("");
@@ -289,7 +288,7 @@ public class DefinitionViewer extends JPanel {
         gbc.gridy = 4 + defFieldCount;
         add(addDef, gbc);
         defs.add(addDef);
-        
+
         defFieldCount++;
         String[] partsOfSpeech = {"noun", "verb", "adjective", "adverb", "pronoun", "preposition", "conjunction", "interjection", "determiner"};
         JComboBox addPOS = new JComboBox(partsOfSpeech);
@@ -297,7 +296,7 @@ public class DefinitionViewer extends JPanel {
         add(addPOS, gbc);
         POSs.add(addPOS);
     }
-	
-	
-	
+
+
+
 }

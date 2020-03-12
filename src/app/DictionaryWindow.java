@@ -1,7 +1,7 @@
 package app;
 
 import javax.swing.JFrame;
-import com.google.gson.*;
+import com.google.gson.Gson;
 import javax.swing.JList;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -14,6 +14,7 @@ public class DictionaryWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static DefinitionViewer definitionViewer;
 	private static Toolbar toolbar;
+	private Words[] shownWords;
 	GridBagConstraints gbc = new GridBagConstraints();
 	
 	/**
@@ -21,8 +22,8 @@ public class DictionaryWindow extends JFrame{
 	 */
 	@SuppressWarnings("unchecked")
 	public DictionaryWindow(Words[] words) {
-		this
-		
+		this.shownWords = words;
+		createView();
 	}
 	
 	private void createView() {
@@ -46,31 +47,6 @@ public class DictionaryWindow extends JFrame{
 		gbc.weighty = 0.1;
 		makeToolbar();
 		add(toolbar, gbc);
-		
-		gbc.weightx = 1;
-		gbc.weighty = 0.1;
-		gbc.gridx = 0;
-		gbc.gridy = 0;
-		add(Toolbar.addBtn, gbc);
-		
-		gbc.gridx = 1;
-		gbc.gridy = 0;
-		add(Toolbar.rmvBtn, gbc);
-
-		gbc.weighty = 0.1;
-		gbc.gridwidth = 2;
-		gbc.gridx = 0;
-		gbc.gridy = 1;
-		add(Toolbar.searchBar, gbc);
-		gbc.gridwidth = 1;
-		
-		gbc.weighty = 0.1;
-		gbc.gridx = 1;
-		gbc.gridy = 2;
-		add(Toolbar.descending, gbc);
-		
-		gbc.gridx = 0;
-		add(Toolbar.ascending, gbc);
 		
 		gbc.weighty = 5;
 		gbc.gridx = 0;
@@ -110,6 +86,31 @@ public class DictionaryWindow extends JFrame{
 	 */
 	private void makeToolbar() {
 		toolbar = new Toolbar();
+		
+		gbc.weightx = 1;
+		gbc.weighty = 0.1;
+		gbc.gridx = 0;
+		gbc.gridy = 0;
+		add(Toolbar.addBtn, gbc);
+		
+		gbc.gridx = 1;
+		gbc.gridy = 0;
+		add(Toolbar.rmvBtn, gbc);
+
+		gbc.weighty = 0.1;
+		gbc.gridwidth = 2;
+		gbc.gridx = 0;
+		gbc.gridy = 1;
+		add(Toolbar.searchBar, gbc);
+		gbc.gridwidth = 1;
+		
+		gbc.weighty = 0.1;
+		gbc.gridx = 1;
+		gbc.gridy = 2;
+		add(Toolbar.descending, gbc);
+		
+		gbc.gridx = 0;
+		add(Toolbar.ascending, gbc);
 	}
 	
 	/**

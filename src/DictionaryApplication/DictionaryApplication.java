@@ -4,19 +4,19 @@ import java.io.*;
 
 import javax.swing.SwingUtilities;
 
-import com.google.gson.*;
+import com.google.gson.Gson;
 
 import app.DictionaryWindow;
 import app.Utils;
 import app.Words;
 
 public class DictionaryApplication {
-	private Words[] words;
+	private static Words[] words;
 	//main function
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				new DictionaryWindow();
+				new DictionaryWindow(words);
 			}
 		});
 	}
@@ -24,7 +24,7 @@ public class DictionaryApplication {
 	//Create an application constructor here
 	public DictionaryApplication() {
 		getGsonFile();
-		DictionaryWindow = new DictionaryWindow(words);
+		//DictionaryWindow = new DictionaryWindow(words);
 	}
 	
 	
