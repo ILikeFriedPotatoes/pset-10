@@ -4,7 +4,7 @@ import java.io.*;
 import javax.swing.SwingUtilities;
 import com.google.gson.Gson;
 import app.DictionaryWindow;
-import app.Utils;
+import app.Utilities;
 import app.Words;
 
 public class DictionaryApplication {
@@ -29,7 +29,7 @@ public class DictionaryApplication {
         Gson gson = new Gson();
         try (Reader reader = new FileReader(System.getProperty("user.dir") + File.separator + "words.json")) {
             setWords(gson.fromJson(reader, Words[].class));
-            Utils.sortWords(words);
+            Utilities.sortWords(words);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,4 +1,6 @@
 package app;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -32,10 +34,16 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener,
 	public Words[] displayWords;
 	public static JList wordsList;
 	private Words[] words;
+	private GridBagConstraints gbc = new GridBagConstraints();
 	//public JList wordsList = new JList(Utilities.parseWords(tbWords));
 
 	public Toolbar(Words[] shownWords) {
-
+		
+		removeAll();
+		revalidate();
+		
+		setLayout(new GridBagLayout());
+		
 		createButtons();
 
 		createSearchBar();
@@ -98,7 +106,7 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener,
 		Words[] newWordsList = Arrays.copyOf(getWords(), getWords().length + 1);
 		newWordsList[newWordsList.length - 1] = newWord;
         setWords(newWordsList);
-        Utils.sortWords(getWords());
+        Utilities.sortWords(getWords());
         saveWords();
 	}
 
@@ -204,5 +212,13 @@ public class Toolbar extends JPanel implements ActionListener, DocumentListener,
 
 	}
 
+	public void showWords() {
+		wordsList = new JList(Utilities.parseWords(tbWords));
+        gbc.gridy = 4;
+        gbc.gridx = 0;
+        gbc.gridwidth = 2;
+        add(wordsList, gbc);
+        setVisible(true);
+	}
 
 }

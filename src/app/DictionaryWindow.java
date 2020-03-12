@@ -55,7 +55,7 @@ public class DictionaryWindow extends JFrame{
         add(Toolbar.wordsList, gbc);
         setVisible(true);
 		
-        Toolbar.wordsList = new JList<Object>(Utils.parseWords(Toolbar.tbWords));
+        Toolbar.wordsList = new JList<Object>(Utilities.parseWords(Toolbar.tbWords));
         gbc.gridy = 4;
         gbc.gridx = 0;
         gbc.gridwidth = 2;
