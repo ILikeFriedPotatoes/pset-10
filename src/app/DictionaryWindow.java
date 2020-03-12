@@ -1,8 +1,8 @@
 package app;
 
 import javax.swing.JFrame;
+import com.google.gson.*;
 import javax.swing.JList;
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
@@ -14,15 +14,20 @@ public class DictionaryWindow extends JFrame{
 	private static final long serialVersionUID = 1L;
 	private static DefinitionViewer definitionViewer;
 	private static Toolbar toolbar;
+	GridBagConstraints gbc = new GridBagConstraints();
 	
 	/**
 	 * Creates the mainframe for the application
 	 */
 	@SuppressWarnings("unchecked")
-	public DictionaryWindow() {
-		super("Joseph's Dictionary");
+	public DictionaryWindow(Words[] words) {
+		this
+		
+	}
+	
+	private void createView() {
+		setTitle("Joseph's Dictionary");
 		setLayout(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
 		
 		showFrame();
 		
@@ -90,7 +95,6 @@ public class DictionaryWindow extends JFrame{
         
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
-	
 	
 	/**
 	 * @showFrame deals with the graphical aspects of the frame
